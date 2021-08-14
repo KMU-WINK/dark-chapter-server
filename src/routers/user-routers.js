@@ -28,4 +28,25 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.patch('/:username', async (req, res) => {
+  const {
+    password,
+    nickname
+  } = req.body;
+
+  await userService.updateUser(req.params.username, {
+    password,
+    nickname
+  });
+  res.status(200)
+    .json({
+      msg: 'success',
+    });
+
+  // if (req.context.user.username === req.params.username) {
+  // } else {
+  //   throw new UserError(UserErrorCode.PermissionDenied);
+  // }
+});
+
 export default router;

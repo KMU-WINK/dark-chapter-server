@@ -44,3 +44,20 @@ export async function createUser(args) {
     throw new UserError(UserErrorCode.UserNameAlreadyExists);
   }
 }
+
+
+export async function updateUser(username, args) {
+  const user = await User.findOne(username.includes('@') ? { email: username } : { username });
+  if (user) {
+    Object.entries(args)
+      // eslint-disable-next-line array-callback-return
+      .map(([key, value]) => {
+        if (value) {
+          user[key] = value;
+        }
+      });
+    user.save();
+  } else {
+    throw new UserError(UserErrorCode.NotFound);
+  }
+}
