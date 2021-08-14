@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/KMU-WINK/dark-chapter-server#readme",
   "dependencies": {
+    "dotenv": "10.0.0",
     "express": "4.17.1",
     "express.js": "^1.0.0",
-    "mongoose": "5.13.7"
+    "mongoose": "5.13.7",
+    "nodemon": "2.0.12"
   }
 }
