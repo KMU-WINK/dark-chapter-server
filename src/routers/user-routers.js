@@ -4,6 +4,12 @@ import * as userService from "../services/user-service";
 
 const router = express.Router();
 
+router.get('/:username', async (req, res) => {
+  const user = await userService.readUser(req.params.username);
+  res.status(200)
+    .json(user);
+});
+
 router.post("/", async (req, res) => {
   const { email, username, password, nickname } = req.body;
 

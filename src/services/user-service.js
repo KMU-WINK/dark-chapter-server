@@ -1,4 +1,20 @@
 import User from "../repositories/user-repository";
+import { UserErrorCode, UserError } from '../errors/user-error';
+
+export async function readUser(username) {
+  const user = await User.findOne(username.includes('@') ? { email: username } : { username });
+  if (!user) {
+    throw new UserError(UserErrorCode.NotFound);
+  }
+
+  const userInfo = Object
+    .entries(user._doc)
+    .filter((item) => item[0] !== 'password')
+    .map(([key, value]) => ({ [key]: value }))
+    .reduce((x, y) => ({ ...x, ...y }));
+
+  return userInfo || null;
+}
 
 export async function createUser(args) {
   const {
