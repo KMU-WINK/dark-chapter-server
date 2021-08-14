@@ -49,4 +49,12 @@ router.patch('/:username', async (req, res) => {
   // }
 });
 
+router.delete('/:username', async (req, res) => {
+  await userService.deleteUser(req.params.username);
+  res.status(200)
+    .json({
+      msg: 'success',
+    });
+});
+
 export default router;

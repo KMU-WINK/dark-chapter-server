@@ -61,3 +61,12 @@ export async function updateUser(username, args) {
     throw new UserError(UserErrorCode.NotFound);
   }
 }
+
+export async function deleteUser(
+  username,
+) {
+  const user = await User.findOneAndDelete(username.includes('@') ? { email: username } : { username });
+  if (!user) {
+    throw new UserError(UserErrorCode.NotFound);
+  }
+}
