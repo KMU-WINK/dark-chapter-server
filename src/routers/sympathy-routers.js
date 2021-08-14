@@ -3,6 +3,12 @@ import * as sympathyService from "../services/sympathy-service";
 
 const router = express.Router();
 
+router.get('/:username', async (req, res) => {
+  const sympathy = await sympathyService.readSympathy(req.params.username);
+  res.status(200)
+    .json(sympathy);
+});
+
 router.post("/", async (req, res) => {
   const {
     angry,
