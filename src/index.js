@@ -12,7 +12,7 @@ mongoose
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false,
-    sslCA: [fs.readFileSync('rds-combined-ca-bundle.pem')],
+    // sslCA: [fs.readFileSync('rds-combined-ca-bundle.pem')],
   })
   .then(() => console.log('Successfully connected to mongodb'))
   .catch((e) => console.error(e));
@@ -24,4 +24,3 @@ app.use('/users', userRouter);
 app.listen(port, () => {
   console.log(`running server at http://127.0.0.1:${port}`);
 });
-  
