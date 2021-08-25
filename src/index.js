@@ -26,4 +26,3 @@ app.use('/sympathy', sympathyRouter);
 app.listen(port, () => {
   console.log(`running server at http://127.0.0.1:${port}`);
 });
-  
