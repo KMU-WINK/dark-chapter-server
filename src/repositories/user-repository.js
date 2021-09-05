@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import { collectName } from '../config/db-config';
 
+
+
 const userSchema = new mongoose.Schema({
 	email: {
 		type: String,

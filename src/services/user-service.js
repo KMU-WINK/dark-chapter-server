@@ -7,6 +7,7 @@ export async function readUser(username) {
     throw new UserError(UserErrorCode.NotFound);
   }
 
+
   const userInfo = Object
     .entries(user._doc)
     .filter((item) => item[0] !== 'password')

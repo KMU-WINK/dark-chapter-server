@@ -4,7 +4,7 @@ import userRouter from './routers/user-routers';
 import boardRouter from './routers/board-routers';
 import sympathyRouter from './routers/sympathy-routers';
 
-const dbadress="mongodb+srv://User:tjsghks12@mongodb.8telv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const dbadress="mmongodb+srv://User:tjsghks12@mongodb.8telv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const app = express();
 const port = 8000;
 
