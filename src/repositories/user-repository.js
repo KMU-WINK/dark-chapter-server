@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 import { collectName } from '../config/db-config';
 
-
-
 const userSchema = new mongoose.Schema({
 	email: {
 		type: String,
@@ -13,11 +11,6 @@ const userSchema = new mongoose.Schema({
 			/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
 			"이메일 형식을 지켜주세요.",
 		],
-	},
-	username: {
-		type: String,
-		required: true,
-		unique: true,
 	},
 	password: {
 		type: String,

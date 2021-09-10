@@ -1,12 +1,11 @@
 import User from "../repositories/user-repository";
 import { UserErrorCode, UserError } from '../errors/user-error';
 
-export async function readUser(username) {
-  const user = await User.findOne(username.includes('@') ? { email: username } : { username });
+export async function readUser(email) {
+  const user = await User.findOne({ email });
   if (!user) {
     throw new UserError(UserErrorCode.NotFound);
   }
-
 
   const userInfo = Object
     .entries(user._doc)
@@ -20,17 +19,15 @@ export async function readUser(username) {
 export async function createUser(args) {
   const {
     email,
-    username,
     password,
     nickname,
   } = args;
   const existUser = await User.findOne({
-    $or: [{ email }, { username }, { nickname }],
+    $or: [{ email }, { nickname }],
   });
   if (!existUser) {
     const user = new User({
       email,
-      username,
       password,
       nickname,
     });
@@ -47,8 +44,8 @@ export async function createUser(args) {
 }
 
 
-export async function updateUser(username, args) {
-  const user = await User.findOne(username.includes('@') ? { email: username } : { username });
+export async function updateUser(args) {
+  const user = await User.findOne({ email });
   if (user) {
     Object.entries(args)
       // eslint-disable-next-line array-callback-return
@@ -63,10 +60,8 @@ export async function updateUser(username, args) {
   }
 }
 
-export async function deleteUser(
-  username,
-) {
-  const user = await User.findOneAndDelete(username.includes('@') ? { email: username } : { username });
+export async function deleteUser(email) {
+  const user = await User.findOneAndDelete({ email });
   if (!user) {
     throw new UserError(UserErrorCode.NotFound);
   }

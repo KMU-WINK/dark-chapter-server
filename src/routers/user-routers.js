@@ -4,19 +4,18 @@ import * as userService from "../services/user-service";
 
 const router = express.Router();
 
-router.get('/:username', async (req, res) => {
-  const user = await userService.readUser(req.params.username);
+router.get('/:email', async (req, res) => {
+  const user = await userService.readUser(req.params.email);
   res.status(200)
     .json(user);
 });
 
 router.post("/", async (req, res) => {
-  const { email, username, password, nickname } = req.body;
+  const { email, password, nickname } = req.body;
 
   try {
     const userId = await userService.createUser({
       email,
-      username,
       password,
       nickname,
     });
@@ -28,13 +27,13 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.patch('/:username', async (req, res) => {
+router.patch('/:email', async (req, res) => {
   const {
     password,
     nickname
   } = req.body;
 
-  await userService.updateUser(req.params.username, {
+  await userService.updateUser(req.params.email, {
     password,
     nickname
   });
@@ -49,8 +48,8 @@ router.patch('/:username', async (req, res) => {
   // }
 });
 
-router.delete('/:username', async (req, res) => {
-  await userService.deleteUser(req.params.username);
+router.delete('/:email', async (req, res) => {
+  await userService.deleteUser(req.params.email);
   res.status(200)
     .json({
       msg: 'success',
