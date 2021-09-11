@@ -4,6 +4,16 @@ import { UserError, UserErrorCode } from '../errors/user-error';
 
 const router = express.Router();
 
+router.get('/', async (req, res) => {
+    const board = await boardService.getBoardListAll();
+    res.status(200).json(board);
+});
+
+router.get('/:email', async (req, res) => {
+    const board = await boardService.getBoardList(req.params.email);
+    res.status(200).json(board);
+});
+
 router.get('/:boardId', async (req, res) => {
     const board = await boardService.getBoard(req.params.boardId);
     res.status(200).json(board);

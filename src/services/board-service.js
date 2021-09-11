@@ -11,6 +11,23 @@ export async function getBoard(boardId) {
     throw new BoardError(BoardErrorCode.NotFound);
 }
 
+export async function getBoardListAll() {
+    const board = await Board.find();
+    if (board) {
+        return board;
+    }
+    throw new BoardError(BoardErrorCode.NotFound);
+}
+
+export async function getBoardList(email) {
+    const user = await User.findOne({ email });
+    const board = await Board.find({writer : user._id});
+    if (board) {
+        return board;
+    }
+    throw new BoardError(BoardErrorCode.NotFound);
+}
+
 export async function createBoard(args) {
     const {
         title,
