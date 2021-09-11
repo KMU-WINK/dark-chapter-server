@@ -24,7 +24,18 @@ mongoose
   })
   .then(() => console.log('Successfully connected to mongodb'))
   .catch((e) => console.error(e));
+app.use((req, res, next) => {
+    // res.append('Access-Control-Allow-Origin', ['*']);
+    // res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,PATCH,DELETE');
+    // res.append('Access-Control-Allow-Headers', 'Content-Type');
 
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,PATCH,DELETE');
+    // eslint-disable-next-line max-len
+    res.setHeader('Access-Control-Allow-Headers', 'Authorization, Origin, Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+    next();
+});
 app.use('/api-token', tokenRouter);
 app.use('/users', userRouter);
 app.use('/boards', boardRouter);
