@@ -5,9 +5,18 @@ import * as userService from "../services/user-service";
 const router = express.Router();
 
 router.get('/:email', async (req, res) => {
-  const user = await userService.readUser(req.params.email);
-  res.status(200)
-    .json(user);
+  try {
+    const user = await userService.readUser(req.params.email);
+    res.status(200)
+      .json(user);
+  } catch(e) {
+    res.json({
+      msg: "fail",
+      status: e.status
+    });
+    console.error(e);
+
+  }
 });
 
 router.post("/", async (req, res) => {
