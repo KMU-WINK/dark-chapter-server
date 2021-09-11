@@ -8,7 +8,7 @@ import { authedMember, tokenChecker } from './middlewares/authorization-token';
 
 const dbadress="mongodb+srv://User:tjsghks12@mongodb.8telv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const app = express();
-const port = 8001;
+const port = 8000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

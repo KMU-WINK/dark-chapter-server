@@ -23,6 +23,7 @@ router.post("/", async (req, res) => {
       msg: "success",
     });
   } catch (e) {
+    res.json(e)
     console.error(e);
   }
 });
