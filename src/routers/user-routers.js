@@ -23,7 +23,10 @@ router.post("/", async (req, res) => {
       msg: "success",
     });
   } catch (e) {
-    res.json(e)
+    res.status(e.status).json({
+      msg: "fail",
+      status: e.status
+    });
     console.error(e);
   }
 });
