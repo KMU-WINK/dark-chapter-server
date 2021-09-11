@@ -42,11 +42,11 @@ export const UserErrorData = getErrorData({
     message: '잘못된 접근입니다.',
   },
   [UserErrorCode.UserEmailAlreadyExists]: {
-    status: 409,
+    status: 400,
     message: '해당 이메일을 사용하는 회원이 이미 존재합니다.',
   },
   [UserErrorCode.UserNicknameAlreadyExists]: {
-    status: 410,
+    status: 400,
     message: '해당 닉네임을 사용하는 회원이 이미 존재합니다.',
   },
 }, UserErrorCode);
