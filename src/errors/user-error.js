@@ -22,7 +22,7 @@ export const UserErrorData = getErrorData({
     message: '회원이 존재하지 않거나 패스워드가 일치하지 않습니다.',
   },
   [UserErrorCode.UserNameAlreadyExists]: {
-    status: 400,
+    status: 409,
     message: '해당 아이디를 사용하는 회원이 이미 존재합니다.',
   },
   [UserErrorCode.NotProtectedPassword]: {
@@ -42,11 +42,11 @@ export const UserErrorData = getErrorData({
     message: '잘못된 접근입니다.',
   },
   [UserErrorCode.UserEmailAlreadyExists]: {
-    status: 400,
+    status: 409,
     message: '해당 이메일을 사용하는 회원이 이미 존재합니다.',
   },
   [UserErrorCode.UserNicknameAlreadyExists]: {
-    status: 400,
+    status: 410,
     message: '해당 닉네임을 사용하는 회원이 이미 존재합니다.',
   },
 }, UserErrorCode);
