@@ -1,9 +1,9 @@
 import Sympathy from "../repositories/sympathy-repository";
 import User from "../repositories/user-repository";
 
-export async function readSympathy(username) {
+export async function readSympathy(email) {
   const user = await User.findOne({
-      username
+      email
   });
 
   const sympathies = await Sympathy.find({
@@ -14,12 +14,16 @@ export async function readSympathy(username) {
 
 export async function createSympathy(args) {
   const {
+    boardId,
+    userId,
     angry,
     funny,
     gloomy,
     shameful
   } = args;
   const sympathy = new Sympathy({
+    boardId,
+    userId,
     angry,
     funny,
     gloomy,

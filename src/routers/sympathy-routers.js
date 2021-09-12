@@ -11,6 +11,8 @@ router.get('/:username', async (req, res) => {
 
 router.post("/", async (req, res) => {
   const {
+    boardId,
+    userId,
     angry,
     funny,
     gloomy,
@@ -19,6 +21,8 @@ router.post("/", async (req, res) => {
 
   try {
     const sympathy = await sympathyService.createSympathy({
+      boardId,
+      userId,
       angry,
       funny,
       gloomy,
