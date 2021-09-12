@@ -1,13 +1,9 @@
 import Sympathy from "../repositories/sympathy-repository";
 import User from "../repositories/user-repository";
 
-export async function readSympathy(email) {
-  const user = await User.findOne({
-      email
-  });
-
+export async function readSympathy(boardId) {
   const sympathies = await Sympathy.find({
-      userId: user._id
+    boardId
   });
   return sympathies;
 }
