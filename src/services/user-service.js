@@ -44,7 +44,7 @@ export async function createUser(args) {
 }
 
 
-export async function updateUser(args) {
+export async function updateUser(email, args) {
   const user = await User.findOne({ email });
   if (user) {
     Object.entries(args)
