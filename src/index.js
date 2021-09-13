@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import userRouter from './routers/user-routers';
 import boardRouter from './routers/board-routers';
 import sympathyRouter from './routers/sympathy-routers';
+import stoneRouter from './routers/stone-router';
 import tokenRouter from './routers/api-token-router';
 import { authedMember, tokenChecker } from './middlewares/authorization-token';
 
@@ -40,6 +41,7 @@ app.use('/api-token', tokenRouter);
 app.use('/users', userRouter);
 app.use('/boards', boardRouter);
 app.use('/sympathy', sympathyRouter);
+app.use('/stones', stoneRouter);
 
 app.listen(port, () => {
   console.log(`running server at http://127.0.0.1:${port}`);

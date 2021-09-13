@@ -3,4 +3,5 @@ export const collectName = {
   User: "User",
   Board: "Board",
   Sympathy: "Sympathy",
+  Stone: "Stone",
 };
