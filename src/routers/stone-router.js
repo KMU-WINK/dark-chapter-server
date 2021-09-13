@@ -4,8 +4,8 @@ import * as boardService from "../services/board-service";
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-  const stone = await stoneService.getStone();
+router.get('/:id', async (req, res) => {
+  const stone = await stoneService.getStone(req.params.id);
   res.status(200).json(stone);
 });
 
