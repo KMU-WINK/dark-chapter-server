@@ -1,12 +1,8 @@
 import mongoose from "mongoose";
-import { collectName } from "../config/db-config";
+import {collectName} from "../config/db-config";
 
 const stoneSchema = new mongoose.Schema(
   {
-    writer: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    },
     title: {
       type: String,
       required: true,
@@ -14,6 +10,10 @@ const stoneSchema = new mongoose.Schema(
     content: {
       type: String,
       required: true,
+    },
+    writer: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
     },
     angry: {
       type: Number,
